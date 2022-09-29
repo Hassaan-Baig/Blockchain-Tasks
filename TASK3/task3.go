@@ -1,0 +1,39 @@
+package main
+import (
+	"fmt"
+)
+
+type Student struct {
+name string
+address string
+rollnumber int
+}
+
+func NewStudent(rollno int, name string, address string)*Student {
+		s := new(Student)
+		s.rollnumber = rollno
+		s.name = name
+		s.address = address
+		return s
+}
+
+type StudentList struct{
+	list []* Student
+}
+
+func (ls *StudentList) CreateStudent(rollno int, name string, address string)*Student{
+	st:= NewStudent(rollno, name, address)
+	ls.list = append(ls.list, st)
+	return st
+}
+
+func main(){
+	student:=new(StudentList)
+	student.CreateStudent(24, "Asim", "AAAAA")
+	student.CreateStudent(25, "Naveed", "BBBBB")
+
+	for i :=0; i < len(student.list); i++ {
+		fmt.Println(*student.list[i])
+
+	}
+}
